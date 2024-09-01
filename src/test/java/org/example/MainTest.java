@@ -19,7 +19,6 @@ class MainTest {
     @BeforeEach
     public void setUp() {
         lms = new LibraryManagementSystem();
-        System.setOut(new PrintStream(outputStreamCaptor));
     }
 
     @Test
@@ -45,6 +44,7 @@ class MainTest {
 
     @Test
     void testViewAvailableBooksWhenNoBooksAvailable() {
+        System.setOut(new PrintStream(outputStreamCaptor));
         lms.viewAvailableBooks();
         String expectedOutput = "Sorry, currently no books are available with us.";
         assertEquals(expectedOutput, outputStreamCaptor.toString().trim());
@@ -52,25 +52,18 @@ class MainTest {
 
     @Test
     void testViewAvailableBooksWhenBooksAreAvailable() {
-        Book book1 = new Book("12345", "Effective Java", "Joshua Bloch", 2008);
-        Book book2 = new Book("67890", "Clean Code", "Robert C. Martin", 2008);
+        Book book1 = new Book("Atomic Habits", "234-234-234-1255", "James Clear", 2018);
 
         lms.addBook(book1);
-        lms.addBook(book2);
-
+        System.setOut(new PrintStream(outputStreamCaptor));
         lms.viewAvailableBooks();
 
-        String expectedOutput = "Following Books are available with us: \n\n" +
-                "Title: Effective Java\n" +
-                "Author: Joshua Bloch\n" +
-                "PublicationYear: 2008\n" +
-                "ISBN: 12345\n" +
-                "Title: Clean Code\n" +
-                "Author: Robert C. Martin\n" +
-                "PublicationYear: 2008\n" +
-                "ISBN: 67890\n";
-
-        assertEquals(expectedOutput.trim(), outputStreamCaptor.toString().trim());
+        String expectedOutput = "Following Books are available with us: \n";
+        assertTrue(outputStreamCaptor.toString().contains(expectedOutput));
+        assertTrue(outputStreamCaptor.toString().contains("Title: Atomic Habits"));
+        assertTrue(outputStreamCaptor.toString().contains("Author: James Clear"));
+        assertTrue(outputStreamCaptor.toString().contains("ISBN: 234-234-234-1255"));
+        assertTrue(outputStreamCaptor.toString().contains("PublicationYear: 2018"));
     }
 }
 

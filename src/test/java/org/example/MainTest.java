@@ -41,6 +41,13 @@ class MainTest {
         assertEquals("Book cannot be added as there is already a book added with ISBN: 12345", exception.getMessage());
     }
 
+    @Test
+    void testViewAvailableBooksWhenNoBooksAvailable() {
+        lms.viewAvailableBooks();
+        String expectedOutput = "Sorry, currently no books are available with us.";
+        assertEquals(expectedOutput, outputStreamCaptor.toString().trim());
+    }
+
 //    @Test
 //    void testViewAvailableBooksWhenNoBooksAvailable() {
 //        lms.viewAvailableBooks();

@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
     LibraryManagementSystem lms;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-    public static final List<Book> availableBooks = LibraryManagementSystem.availableBooks;
-    public static final List<Book> borrowedBooks = LibraryManagementSystem.borrowedBooks;
+    public static final List<Book> availableBooks = LibraryManagementSystem.getAvailableBooks();
+    public static final List<Book> borrowedBooks = LibraryManagementSystem.getBorrowedBooks();
 
     @BeforeEach
     public void setUp() {

@@ -65,6 +65,14 @@ class MainTest {
         assertTrue(outputStreamCaptor.toString().contains("ISBN: 234-234-234-1255"));
         assertTrue(outputStreamCaptor.toString().contains("PublicationYear: 2018"));
     }
+
+    @Test
+    void addBookWithNullAuthorNameTest(){
+        Book book4=new Book("Psychology Of Money","34567","",2019);
+        assertThrows(IllegalArgumentException.class,()->{
+            lms.addBook(book4);
+        },"Adding a book with Null as AuthorName should throw an IllegalArgumentException");
+    }
 }
 
 

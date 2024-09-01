@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,6 +19,7 @@ class MainTest {
     @BeforeEach
     public void setUp() {
         lms = new LibraryManagementSystem();
+        System.setOut(new PrintStream(outputStreamCaptor));
     }
 
     @Test
@@ -43,10 +45,34 @@ class MainTest {
 
     @Test
     void testViewAvailableBooksWhenNoBooksAvailable() {
-        lms.viewAvailableViwBooks();
+        lms.viewAvailableBooks();
         String expectedOutput = "Sorry, currently no books are available with us.";
         assertEquals(expectedOutput, outputStreamCaptor.toString().trim());
     }
+
+    @Test
+    void testViewAvailableBooksWhenBooksAreAvailable() {
+        Book book1 = new Book("12345", "Effective Java", "Joshua Bloch", 2008);
+        Book book2 = new Book("67890", "Clean Code", "Robert C. Martin", 2008);
+
+        lms.addBook(book1);
+        lms.addBook(book2);
+
+        lms.viewAvailableBooks();
+
+        String expectedOutput = "Following Books are available with us: \n\n" +
+                "Title: Effective Java\n" +
+                "Author: Joshua Bloch\n" +
+                "PublicationYear: 2008\n" +
+                "ISBN: 12345\n" +
+                "Title: Clean Code\n" +
+                "Author: Robert C. Martin\n" +
+                "PublicationYear: 2008\n" +
+                "ISBN: 67890\n";
+
+        assertEquals(expectedOutput.trim(), outputStreamCaptor.toString().trim());
+    }
+
 
 //    @Test
 //    void testViewAvailableBooksWhenNoBooksAvailable() {

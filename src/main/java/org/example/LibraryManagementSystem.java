@@ -12,6 +12,13 @@ public class LibraryManagementSystem {
     public static final List<Book> availableBooks = new ArrayList<>();
     public static final List<Book> borrowedBooks = new ArrayList<>();
 
+    public static List<Book> getAvailableBooks() {
+        return Collections.unmodifiableList(availableBooks);
+    }
+    public static List<Book> getBorrowedBooks() {
+        return Collections.unmodifiableList(borrowedBooks);
+    }
+
     public void addBook(Book book) throws IllegalArgumentException {
         if(book.getAuthor()==null||book.getAuthor().trim().isEmpty()){
             throw new IllegalArgumentException("Book Author can't be null");
@@ -31,12 +38,14 @@ public class LibraryManagementSystem {
         System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
     }
 
+
+
     public void viewAvailableBooks() {
         if (availableBooks.isEmpty()) {
             System.out.println("Sorry, currently no books are available with us.");
             return;
         }
-        System.out.println("Following Books are available with us: \n");
+        System.out.println("Following Books are available with us: ");
         for (Book book : availableBooks) {
             System.out.println(
                     "Title: " + book.getTitle() + "\n"

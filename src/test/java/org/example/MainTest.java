@@ -89,6 +89,22 @@ class MainTest {
             lms.addBook(book4);
         },"Adding a book with Null ISBN should throw an IllegalArgumentException");
     }
+
+    @Test
+    public void borrowAvailableBookTest() {
+        Book book = new Book("title", "987-123-123-9876", "author", 2004);
+        // Add a single books
+        lms.addBook(book);
+        // available books before borrowing
+        int noOfAvailableBooks = availableBooks.size();
+        // borrowed books before borrowing
+        int noOfBorrowedBooks = borrowedBooks.size();
+        lms.borrowBook("987-123-123-9876");
+        assertEquals(noOfAvailableBooks - 1, availableBooks.size());
+        assertEquals(noOfBorrowedBooks + 1, borrowedBooks.size());
+        assertTrue(borrowedBooks.contains(book));
+        assertFalse(availableBooks.contains(book));
+    }
 }
 
 

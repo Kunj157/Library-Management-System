@@ -43,7 +43,7 @@ class MainTest {
 
     @Test
     void testViewAvailableBooksWhenNoBooksAvailable() {
-        lms.viewAvailableBooks();
+        lms.viewAvailableViwBooks();
         String expectedOutput = "Sorry, currently no books are available with us.";
         assertEquals(expectedOutput, outputStreamCaptor.toString().trim());
     }

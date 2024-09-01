@@ -28,7 +28,7 @@ class MainTest {
         // number of books before adding
         int noOfBooks = availableBooks.size();
         lms.addBook(book);
-        assertEquals(noOfBooks+1,availableBooks.size());
+        assertEquals(noOfBooks + 1, availableBooks.size());
         assertTrue(availableBooks.contains(book));
     }
 
@@ -72,38 +72,6 @@ class MainTest {
 
         assertEquals(expectedOutput.trim(), outputStreamCaptor.toString().trim());
     }
-
-
-//    @Test
-//    void testViewAvailableBooksWhenNoBooksAvailable() {
-//        lms.viewAvailableBooks();
-//        String expectedOutput = "Sorry, currently no books are available with us.";
-//        System.out.println(outputStreamCaptor.toString());
-//        assertEquals(expectedOutput, outputStreamCaptor.toString().trim());
-//    }
-//
-//    @Test
-//    void testViewAvailableBooksWhenBooksAreAvailable() {
-//        Book book1 = new Book("12345", "Effective Java", "Joshua Bloch", 2008);
-//        Book book2 = new Book("67890", "Clean Code", "Robert C. Martin", 2008);
-//
-//        lms.addBook(book1);
-//        lms.addBook(book2);
-//
-//        lms.viewAvailableBooks();
-//
-//        String expectedOutput = """
-//                Following Books are available with us: \
-//                Title: Effective Java
-//                Author: Joshua Bloch
-//                PublicationYear: 2008
-//                ISBN: 12345
-//                Title: Clean Code
-//                Author: Robert C. Martin
-//                PublicationYear: 2008
-//                ISBN: 67890
-//                """;
-//
-//        assertEquals(expectedOutput.trim(), outputStreamCaptor.toString().trim());
-//    }
 }
+
+

@@ -1,6 +1,6 @@
 # Library Management System
 
-It is a min-project on Library Management System based on Test-driven Development(TDD).It is used to perform basic operations such as adding books, borrowing books, and viewing available books. 
+Welcome to the solution for the Library Management Kata! It showcases the use of Test-Driven Development (TDD) to solve a programming problem using incremental commits and clear, concise code.It is a mini-project on Library Management System based on Test-driven Development(TDD).It is used to perform basic operations such as adding books, borrowing books, and viewing available books. 
 
 ## Table of Contents
 
@@ -10,9 +10,10 @@ It is a min-project on Library Management System based on Test-driven Developmen
   - [Installation](#installation)
 - [Running the tests](#running-the-tests)
 - [Test Coverage](#test-coverage)
-- [How to use?](#how-to-use?)
+- [How to use?](#how-to-use)
 - [Built with](#built-with)
 - [Authors](#authors)
+
 
 [WHAT IS TDD?](https://testdriven.io/test-driven-development/)
 
@@ -23,7 +24,7 @@ It is a min-project on Library Management System based on Test-driven Developmen
 
 ## How to Setup the Project?
 
-Follow the below steps to get started with the project running on your system. 
+Below are the steps to setup this project.
 
 ### Prerequisites
 
@@ -39,7 +40,7 @@ Follow the below steps to get started with the project running on your system.
 
 - Clone the github repo using git clone command.
 
-- Open the IntelliJ Idea terminal and write the command: git clone 
+- Open the IntelliJ Idea terminal and write the command: git clone git@github.com:Kunj157/Library-Management-System.git
 
 ## Running the Tests
 
@@ -60,8 +61,6 @@ The following image shows the test coverage of the project.
   ```
   src > main > java > org > example > Main.java
   ```
-- Object of LibraryManagementClass is created for you. Start using the application by adding new books, borrowing, returning, and viewing the already added books. 
-
 
 ## Built with
 

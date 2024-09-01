@@ -9,16 +9,19 @@ import java.util.Iterator;
 import java.util.List;
 
 public class LibraryManagementSystem {
-    private static final List<Book> availableBooks = new ArrayList<>();
-    private static final List<Book> borrowedBooks = new ArrayList<>();
+    public static final List<Book> availableBooks = new ArrayList<>();
+    public static final List<Book> borrowedBooks = new ArrayList<>();
 
-    // Declaring this methods so that other classes can only access both the lists in a read-only manner
-    public static List<Book> getAvailableBooks() {
-        return Collections.unmodifiableList(availableBooks);
+    public void addBook(Book book) throws IllegalArgumentException {
+        for (Book availableBook : availableBooks) {
+            if (availableBook.getISBN().equals(book.getISBN())) {
+                throw new IllegalArgumentException("Book cannot be added as there is already a book added with ISBN: " + book.getISBN());
+            }
+        }
+        availableBooks.add(book);
+        System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
     }
-    public static List<Book> getBorrowedBooks() {
-        return Collections.unmodifiableList(borrowedBooks);
-    }
+
     public void viewAvailableBooks() {
         if (availableBooks.isEmpty()) {
             System.out.println("Sorry, currently no books are available with us.");
@@ -32,10 +35,5 @@ public class LibraryManagementSystem {
                             + "PublicationYear: " + book.getPublicationYear() + "\n"
                             + "ISBN: " + book.getISBN() + "\n");
         }
-    }
-
-    public void addBook(Book book) throws IllegalArgumentException {
-        availableBooks.add(book);
-        System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
     }
 }

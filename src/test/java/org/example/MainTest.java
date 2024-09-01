@@ -79,7 +79,15 @@ class MainTest {
         Book book4=new Book("","43768","Morgan Housel",2019);
         assertThrows(IllegalArgumentException.class,()->{
             lms.addBook(book4);
-        },"Adding a book with Null as AuthorName should throw an IllegalArgumentException");
+        },"Adding a book with Null Title should throw an IllegalArgumentException");
+    }
+
+    @Test
+    void addBookWithNullISBNTest(){
+        Book book4=new Book("Alchemist","","Paulo Coelho",2019);
+        assertThrows(IllegalArgumentException.class,()->{
+            lms.addBook(book4);
+        },"Adding a book with Null ISBN should throw an IllegalArgumentException");
     }
 }
 

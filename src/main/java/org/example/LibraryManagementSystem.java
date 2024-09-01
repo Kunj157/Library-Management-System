@@ -50,6 +50,7 @@ public class LibraryManagementSystem {
                 return;
             }
         }
+        throw new IllegalArgumentException("Sorry the book with ISBN " + ISBN + " is not available!");
     }
 
     public void viewAvailableBooks() {

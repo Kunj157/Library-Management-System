@@ -38,7 +38,19 @@ public class LibraryManagementSystem {
         System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
     }
 
-
+    public void borrowBook(String ISBN){
+        // Using Iterator to safely and efficiently remove the book from the list while iterating it at the same time
+        Iterator<Book> iterator = availableBooks.iterator();
+        while (iterator.hasNext()) {
+            Book book = iterator.next();
+            if (book.getISBN().equals(ISBN)) {
+                iterator.remove();
+                borrowedBooks.add(book);
+                System.out.println("Book with ISBN " + ISBN + " borrowed Successfully!");
+                return;
+            }
+        }
+    }
 
     public void viewAvailableBooks() {
         if (availableBooks.isEmpty()) {

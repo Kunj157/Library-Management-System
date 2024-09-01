@@ -105,6 +105,15 @@ class MainTest {
         assertTrue(borrowedBooks.contains(book));
         assertFalse(availableBooks.contains(book));
     }
+
+    @Test
+    public void borrowUnavailableBook() {
+        Book book = new Book("Rich Dad Poor Dad", "32145", "Robert Kiyoski", 2021);
+        // Add a single books
+        lms.addBook(book);
+        assertThrows(IllegalArgumentException.class, () -> lms.borrowBook("01345"),
+                "Trying to borrow an unavailable book should thrown an IllegalArgumentException");
+    }
 }
 
 

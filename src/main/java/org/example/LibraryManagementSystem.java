@@ -19,7 +19,9 @@ public class LibraryManagementSystem {
         if(book.getTitle()==null||book.getTitle().trim().isEmpty()){
             throw new IllegalArgumentException("Book Title can't be null");
         }
-
+        if(book.getISBN()==null||book.getISBN().trim().isEmpty()){
+            throw new IllegalArgumentException("ISBN no can't be null");
+        }
         for (Book availableBook : availableBooks) {
             if (availableBook.getISBN().equals(book.getISBN())) {
                 throw new IllegalArgumentException("Book cannot be added as there is already a book added with ISBN: " + book.getISBN());

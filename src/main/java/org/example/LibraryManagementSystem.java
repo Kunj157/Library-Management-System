@@ -53,7 +53,7 @@ public class LibraryManagementSystem {
         throw new IllegalArgumentException("Sorry the book with ISBN " + ISBN + " is not available!");
     }
 
-    public void returnBook(String ISBN){
+    public void returnBook(String ISBN) throws IllegalArgumentException{
         // Using Iterator to safely and efficiently remove the book from the list while iterating it at the same time
         Iterator<Book> iterator = borrowedBooks.iterator();
         while (iterator.hasNext()) {
@@ -65,6 +65,7 @@ public class LibraryManagementSystem {
                 return;
             }
         }
+        throw new IllegalArgumentException("You are returning the wrong book with ISBN as: " + ISBN);
     }
 
     public void viewAvailableBooks() {

@@ -38,7 +38,7 @@ public class LibraryManagementSystem {
         System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
     }
 
-    public void borrowBook(String ISBN){
+    public void borrowBook(String ISBN) throws IllegalArgumentException{
         // Using Iterator to safely and efficiently remove the book from the list while iterating it at the same time
         Iterator<Book> iterator = availableBooks.iterator();
         while (iterator.hasNext()) {
@@ -51,6 +51,20 @@ public class LibraryManagementSystem {
             }
         }
         throw new IllegalArgumentException("Sorry the book with ISBN " + ISBN + " is not available!");
+    }
+
+    public void returnBook(String ISBN){
+        // Using Iterator to safely and efficiently remove the book from the list while iterating it at the same time
+        Iterator<Book> iterator = borrowedBooks.iterator();
+        while (iterator.hasNext()) {
+            Book book = iterator.next();
+            if (book.getISBN().equals(ISBN)) {
+                iterator.remove();
+                availableBooks.add(book);
+                System.out.println("Book with ISBN " + ISBN + " returned Successfully!");
+                return;
+            }
+        }
     }
 
     public void viewAvailableBooks() {

@@ -13,6 +13,9 @@ public class LibraryManagementSystem {
     public static final List<Book> borrowedBooks = new ArrayList<>();
 
     public void addBook(Book book) throws IllegalArgumentException {
+        if(book.getAuthor()==null||book.getAuthor().trim().isEmpty()){
+            throw new IllegalArgumentException("Book Author can't be null");
+        }
         for (Book availableBook : availableBooks) {
             if (availableBook.getISBN().equals(book.getISBN())) {
                 throw new IllegalArgumentException("Book cannot be added as there is already a book added with ISBN: " + book.getISBN());
